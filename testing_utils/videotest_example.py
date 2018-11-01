@@ -21,4 +21,5 @@ vid_test = VideoTest(class_names, model, input_shape)
 
 # To test on webcam 0, remove the parameter (or change it to another number
 # to test on that webcam)
-vid_test.run('path/to/your/video.mkv')
+#vid_test.run('path/to/your/video.mkv')
+vid_test.run()
