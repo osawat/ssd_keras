@@ -1,0 +1,7 @@
+{
+    "ssd_weights_path":"weights_SSD300.hdf5",
+    "classes":["Aeroplane", "Bicycle", "Bird", "Boat", "Bottle",
+               "Bus", "Car", "Cat", "Chair", "Cow", "Diningtable",
+               "Dog", "Horse","Motorbike", "Person", "Pottedplant",
+               "Sheep", "Sofa", "Train", "Tvmonitor"]
+}
