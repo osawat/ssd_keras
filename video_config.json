@@ -3,5 +3,6 @@
     "classes":["Aeroplane", "Bicycle", "Bird", "Boat", "Bottle",
                "Bus", "Car", "Cat", "Chair", "Cow", "Diningtable",
                "Dog", "Horse","Motorbike", "Person", "Pottedplant",
-               "Sheep", "Sofa", "Train", "Tvmonitor"]
+               "Sheep", "Sofa", "Train", "Tvmonitor"],
+    "confidence":0.6
 }

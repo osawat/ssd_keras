@@ -13,6 +13,7 @@ from ssd import SSD300
 from ssd_utils import BBoxUtility
 
 import json
+import os
 
 
 class VideoPlayer:
@@ -50,9 +51,12 @@ class VideoPlayer:
         self.width = int(self.cap.get(cv2.CAP_PROP_FRAME_WIDTH))
         self.height = int(self.cap.get(cv2.CAP_PROP_FRAME_HEIGHT))
         self.voc_classes = self.config["classes"]
+        self.confidence = self.config["confidence"]
         self.num_classes = len(self.voc_classes) + 1
         self.input_shape = (300, 300, 3)
         self.model = SSD300(self.input_shape, num_classes=self.num_classes)
+        if not os.path.isfile(self.config["ssd_weights_path"]):
+            raise ValueError("ssd_weights file does not exist.\ncheck video_config.json file.") 
         self.model.load_weights(self.config["ssd_weights_path"], by_name=True)
         self.bbox_util = BBoxUtility(self.num_classes)
 
@@ -87,8 +91,8 @@ class VideoPlayer:
         det_xmax = results[0][:, 4]
         det_ymax = results[0][:, 5]
 
-        # Get detections with confidence higher than 0.6.
-        top_indices = [i for i, conf in enumerate(det_conf) if conf >= 0.6]
+        # Get detections with confidence higher than self.confidence
+        top_indices = [i for i, conf in enumerate(det_conf) if conf >= self.confidence]
 
         top_conf = det_conf[top_indices]
         top_label_indices = det_label[top_indices].tolist()
